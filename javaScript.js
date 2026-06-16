@@ -1,33 +1,46 @@
 const rock = "ROCK";
 const paper = "PAPER";
 const scissors = "SCISSORS";
+const spock = "SPOCK";
 
-getComputerChoice();
+let humanChoice = getHumanChoice();
+console.log("-=" + humanChoice + "=-");
+
+let computerChoice = getComputerChoice();
+console.log(computerChoice);
+
 
 function getComputerChoice(){
 
     /*Num intentionally assumes values between 0-99, the range can be perfectly
       split into thirds*/
     let num = Math.floor(Math.random() * 100);
-    console.log(num);
+    let result;
 
     if (num < 33) {
 
-        console.log(rock);
+        return result = rock;
 
     } else if(num >= 33 && num < 66){
 
-        console.log(paper);
+        return result = paper;
 
     } else if (num >= 66) {
 
-        console.log(scissors);
+        return result = scissors;
 
     } else {
-        
-        console.log("SPOCK");
+
+        return result = spock;
     
     }
 
+
+}
+
+function getHumanChoice(){
+
+    let playerChoice = prompt("ROCK, PAPER, SCISSORS - type your choice!");
+    return playerChoice;
 
 }
