@@ -101,15 +101,15 @@ function playGame(){
 
     if(humanScore > computerScore){
 
-        console.log("Player wins!")
+        console.log("Final result: Player wins!")
 
     } else if(humanScore < computerScore){
 
-        console.log("Computer wins!");
+        console.log("Final result: Computer wins!");
 
     } else {
 
-        console.log ("Tie!");
+        console.log ("Final result: Tie!");
 
     }
 
