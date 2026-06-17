@@ -9,6 +9,11 @@ console.log("-=" + humanChoice + "=-");
 let computerChoice = getComputerChoice();
 console.log(computerChoice);
 
+let humanScore = 0;
+let computerScore = 0;
+
+playRound(humanChoice, computerChoice);
+
 
 function getComputerChoice(){
 
@@ -40,7 +45,44 @@ function getComputerChoice(){
 
 function getHumanChoice(){
 
-    let playerChoice = prompt("ROCK, PAPER, SCISSORS - type your choice!");
-    return playerChoice;
+    let humanChoice = prompt("ROCK, PAPER, SCISSORS - type your choice!");
+    return humanChoice;
+
+}
+
+function playRound(humanChoice, computerChoice){
+
+    let human = humanChoice.toUpperCase();
+    let computer = computerChoice.toUpperCase();
+
+
+    if((human === "ROCK" && computer === "SCISSORS") ||
+       (human === "PAPER" && computer === "ROCK") ||
+       (human === "SCISSORS" && computer === "PAPER")){
+
+        console.log("You win! " + human + " beats " + computer + ".");
+        humanScore += 1;
+        console.log("Human score: " + humanScore);
+        console.log("Computer score: " + computerScore);
+
+
+    } else if((human === "SCISSORS" && computer === "ROCK")||
+              (human === "ROCK" && computer === "PAPER")||
+              (human === "PAPER" && computer === "SCISSORS")){
+
+        console.log("You lose! " + computer + " beats " + human + ".");
+        computerScore += 1;
+        console.log("Human score: " + humanScore);
+        console.log("Computer score: " + computerScore);
+
+
+    } else {
+
+        console.log("Tie! " + human + " equals " + computer + ".");
+        console.log("Human score: " + humanScore);
+        console.log("Computer score: " + computerScore);
+
+    }
+
 
 }
