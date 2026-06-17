@@ -3,17 +3,7 @@ const paper = "PAPER";
 const scissors = "SCISSORS";
 const spock = "SPOCK";
 
-let humanChoice = getHumanChoice();
-console.log("-=" + humanChoice + "=-");
-
-let computerChoice = getComputerChoice();
-console.log(computerChoice);
-
-let humanScore = 0;
-let computerScore = 0;
-
-playRound(humanChoice, computerChoice);
-
+playGame();
 
 function getComputerChoice(){
 
@@ -50,7 +40,15 @@ function getHumanChoice(){
 
 }
 
-function playRound(humanChoice, computerChoice){
+
+
+function playGame(){
+
+    let humanScore = 0;
+    let computerScore = 0;
+    let round = 0;
+
+    function playRound(humanChoice, computerChoice){
 
     let human = humanChoice.toUpperCase();
     let computer = computerChoice.toUpperCase();
@@ -84,5 +82,35 @@ function playRound(humanChoice, computerChoice){
 
     }
 
+    }
+
+
+    while (round < 5){
+
+        let humanChoice = getHumanChoice();
+        console.log("-=" + humanChoice + "=-");
+
+        let computerChoice = getComputerChoice();
+        console.log(computerChoice);
+
+        playRound(humanChoice, computerChoice);
+        round++;
+
+        console.log("Round number: " + round);
+    }
+
+    if(humanScore > computerScore){
+
+        console.log("Player wins!")
+
+    } else if(humanScore < computerScore){
+
+        console.log("Computer wins!");
+
+    } else {
+
+        console.log ("Tie!");
+
+    }
 
 }
