@@ -5,11 +5,23 @@ const spock = "SPOCK";
 
 playGame();
 
+function randomNumber(){
+
+    /*Range 0-99 can be perfectly split into thirds*/
+    return Math.floor(Math.random() * 100);
+
+}
+
+function toUpper(string){
+
+    return string.toUpperCase();
+
+}
+
 function getComputerChoice(){
 
-    /*Num intentionally assumes values between 0-99, the range can be perfectly
-      split into thirds*/
-    let num = Math.floor(Math.random() * 100);
+    
+    let num = randomNumber();
     let result;
 
     if (num < 33) {
@@ -50,8 +62,8 @@ function playGame(){
 
     function playRound(humanChoice, computerChoice){
 
-    let human = humanChoice.toUpperCase();
-    let computer = computerChoice.toUpperCase();
+    let human = toUpper(humanChoice);
+    let computer = toUpper(computerChoice);
 
 
     if((human === "ROCK" && computer === "SCISSORS") ||
