@@ -5,7 +5,7 @@ const spock = "SPOCK";
 
 playGame();
 
-function randomNumber(){
+function getRandomNumber(){
 
     /*Range 0-99 can be perfectly split into thirds*/
     return Math.floor(Math.random() * 100);
@@ -21,7 +21,7 @@ function toUpper(string){
 function getComputerChoice(){
 
     
-    let num = randomNumber();
+    let num = getRandomNumber();
     let result;
 
     if (num < 33) {
