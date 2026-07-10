@@ -1,9 +1,21 @@
+
+//Constants
 const rock = "ROCK";
 const paper = "PAPER";
-const scissors = "SCISSORS";
 const spock = "SPOCK";
+const scissors = "SCISSORS";
 
-playGame();
+//HTML elements refs
+const choicesDiv = document.getElementById("#choices");
+const rockButton = document.getElementById("#rock");
+const paperButton = document.getElementById("#paper");
+const scissorsButton = document.getElementById("#scissors");
+
+//Score count
+let humanScore = 0;
+let computerScore = 0;
+
+//-=FUNCTIONS=-###########################################
 
 function getRandomNumber(){
 
@@ -53,16 +65,10 @@ function getHumanChoice(){
 }
 
 
-
-function playGame(){
-
-    let humanScore = 0;
-    let computerScore = 0;
-    let round = 0;
-
-    function playRound(humanChoice, computerChoice){
+function playRound(humanChoice, computerChoice){
 
     let human = toUpper(humanChoice);
+    console.log("-=" + human + "=-");
     let computer = toUpper(computerChoice);
 
 
@@ -94,35 +100,35 @@ function playGame(){
 
     }
 
-    }
+}
 
+function resetScore(){
 
-    while (round < 5){
-
-        let humanChoice = getHumanChoice();
-        console.log("-=" + humanChoice + "=-");
-
-        let computerChoice = getComputerChoice();
-        console.log(computerChoice);
-
-        playRound(humanChoice, computerChoice);
-        round++;
-
-        console.log("Round number: " + round);
-    }
-
-    if(humanScore > computerScore){
-
-        console.log("Final result: Player wins!")
-
-    } else if(humanScore < computerScore){
-
-        console.log("Final result: Computer wins!");
-
-    } else {
-
-        console.log ("Final result: Tie!");
-
-    }
+    humanScore = 0;
+    computerScore = 0;
 
 }
+    
+function checkVictory(humanScore, computerScore){
+
+    if(humanScore === 5){console.log("Final result: Player wins!"); resetScore();} 
+    else if(computerScore === 5){console.log("Final result: Computer wins!"); resetScore();}   
+
+}
+
+//-=LISTENERS=-###########################################
+
+choicesDiv.addEventListener("click", (e) => {
+
+    let target = e.target;
+    let computerChoice = "";
+
+    computerChoice = getComputerChoice();
+    console.log(computerChoice);
+    playRound(target.textContent, computerChoice); 
+    checkVictory(humanScore, computerScore);
+    
+});
+
+
+
