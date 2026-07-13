@@ -7,9 +7,10 @@ const scissors = "SCISSORS";
 
 //HTML elements refs
 const choicesDiv = document.getElementById("#choices");
-const rockButton = document.getElementById("#rock");
-const paperButton = document.getElementById("#paper");
-const scissorsButton = document.getElementById("#scissors");
+//const rockButton = document.getElementById("#rock");
+//const paperButton = document.getElementById("#paper");
+//const scissorsButton = document.getElementById("#scissors");
+const resultsDiv = document.getElementById("#results");
 
 //Score count
 let humanScore = 0;
@@ -68,7 +69,7 @@ function getHumanChoice(){
 function playRound(humanChoice, computerChoice){
 
     let human = toUpper(humanChoice);
-    console.log("-=" + human + "=-");
+    resultsDiv.innerHTML += ("HumanChoice: " + human + "<br>");
     let computer = toUpper(computerChoice);
 
 
@@ -76,27 +77,29 @@ function playRound(humanChoice, computerChoice){
        (human === "PAPER" && computer === "ROCK") ||
        (human === "SCISSORS" && computer === "PAPER")){
 
-        console.log("You win! " + human + " beats " + computer + ".");
+        resultsDiv.innerHTML += ("<br>" + "You win! " + human + " beats " + computer + "." + "<br>");
         humanScore += 1;
-        console.log("Human score: " + humanScore);
-        console.log("Computer score: " + computerScore);
+        
+        resultsDiv.innerHTML += ("Human score: " + humanScore + "<br>");
+        resultsDiv.innerHTML += ("Computer score: " + computerScore + "<br>");
 
 
     } else if((human === "SCISSORS" && computer === "ROCK")||
               (human === "ROCK" && computer === "PAPER")||
               (human === "PAPER" && computer === "SCISSORS")){
 
-        console.log("You lose! " + computer + " beats " + human + ".");
+        resultsDiv.innerHTML += ("<br>" + "You lose! " + computer + " beats " + human + "." + "<br>")
         computerScore += 1;
-        console.log("Human score: " + humanScore);
-        console.log("Computer score: " + computerScore);
+
+        resultsDiv.innerHTML += ("Human score: " + humanScore + "<br>");
+        resultsDiv.innerHTML += ("Computer score: " + computerScore + "<br>");
 
 
     } else {
 
-        console.log("Tie! " + human + " equals " + computer + ".");
-        console.log("Human score: " + humanScore);
-        console.log("Computer score: " + computerScore);
+        resultsDiv.innerHTML += ("<br>" + "Tie! " + human + " equals " + computer + "." + "<br>");
+        resultsDiv.innerHTML += ("Human score: " + humanScore + "<br>");
+        resultsDiv.innerHTML += ("Computer score: " + computerScore + "<br>");
 
     }
 
@@ -111,8 +114,16 @@ function resetScore(){
     
 function checkVictory(humanScore, computerScore){
 
-    if(humanScore === 5){console.log("Final result: Player wins!"); resetScore();} 
-    else if(computerScore === 5){console.log("Final result: Computer wins!"); resetScore();}   
+    if(humanScore === 5){
+        
+        resultsDiv.innerHTML += ("Final result: Player wins!");
+        
+        resetScore();} 
+    else if(computerScore === 5){
+        
+        resultsDiv.innerHTML += ("Final result: Computer wins!");
+        
+        resetScore();}   
 
 }
 
@@ -124,7 +135,7 @@ choicesDiv.addEventListener("click", (e) => {
     let computerChoice = "";
 
     computerChoice = getComputerChoice();
-    console.log(computerChoice);
+    resultsDiv.innerHTML = "ComputerChoice: " + computerChoice + "<br>";
     playRound(target.textContent, computerChoice); 
     checkVictory(humanScore, computerScore);
     
