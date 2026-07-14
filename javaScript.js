@@ -7,9 +7,6 @@ const scissors = "SCISSORS";
 
 //HTML elements refs
 const choicesDiv = document.getElementById("#choices");
-//const rockButton = document.getElementById("#rock");
-//const paperButton = document.getElementById("#paper");
-//const scissorsButton = document.getElementById("#scissors");
 const resultsDiv = document.getElementById("#results");
 
 //Score count
@@ -116,12 +113,12 @@ function checkVictory(humanScore, computerScore){
 
     if(humanScore === 5){
         
-        resultsDiv.innerHTML += ("Final result: Player wins!");
+        resultsDiv.innerHTML += ("<br>" + "Final result: Player wins!");
         
         resetScore();} 
     else if(computerScore === 5){
         
-        resultsDiv.innerHTML += ("Final result: Computer wins!");
+        resultsDiv.innerHTML += ("<br>" + "Final result: Computer wins!");
         
         resetScore();}   
 
